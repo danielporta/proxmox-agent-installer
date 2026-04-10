@@ -16,6 +16,7 @@ update_os
 msg_info "Installing Dependencies"
 $STD apt-get install -y \
   curl \
+  git \
   gnupg \
   ca-certificates
 msg_ok "Installed Dependencies"
