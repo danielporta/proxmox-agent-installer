@@ -45,7 +45,7 @@ Description=OpenClaw Gateway
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/openclaw gateway --port 18789
+ExecStart=/usr/bin/openclaw gateway --port 18789
 Restart=always
 RestartSec=5
 
