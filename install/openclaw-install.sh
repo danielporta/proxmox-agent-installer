@@ -14,9 +14,13 @@ network_check
 update_os
 
 msg_info "Installing Dependencies"
+$STD apt-get update
 $STD apt-get install -y \
   curl \
   git \
+  gh \
+  ripgrep \
+  ffmpeg \
   gnupg \
   ca-certificates
 msg_ok "Installed Dependencies"
@@ -38,23 +42,18 @@ msg_info "Creating Systemd Service"
 cat <<'EOF' >/etc/systemd/system/openclaw.service
 [Unit]
 Description=OpenClaw Gateway
-Documentation=https://github.com/openclaw/openclaw
 After=network.target
 
 [Service]
-Type=simple
-User=root
-WorkingDirectory=/root
-ExecStart=/usr/bin/openclaw gateway
-Restart=on-failure
-RestartSec=10
-StandardOutput=journal
-StandardError=journal
+ExecStart=/usr/local/bin/openclaw gateway --port 18789
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl enable openclaw &>/dev/null
+systemctl daemon-reload
+systemctl enable --now openclaw &>/dev/null
 msg_ok "Created Systemd Service"
 
 motd_ssh

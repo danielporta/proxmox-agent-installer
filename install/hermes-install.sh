@@ -14,9 +14,11 @@ network_check
 update_os
 
 msg_info "Installing System Dependencies"
+$STD apt-get update
 $STD apt-get install -y \
   curl \
   git \
+  gh \
   gcc \
   python3-dev \
   libffi-dev \
