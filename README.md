@@ -6,18 +6,14 @@ Proxmox LXC installers for AI agent frameworks, based on the [community-scripts]
 
 | App | Description | RAM | Disk | Port |
 |---|---|---|---|---|
-| [IronClaw](https://github.com/nearai/ironclaw) | Security-focused AI agent by NearAI | 2 GB | 8 GB | 3000 |
 | [OpenClaw](https://github.com/openclaw/openclaw) | Personal AI assistant with unified messaging inbox | 2 GB | 8 GB | 18789 |
 | [Hermes](https://github.com/nousresearch/hermes-agent) | Self-improving AI agent by Nous Research | 4 GB | 12 GB | — |
+
+> **IronClaw** is available in the official [community-scripts](https://github.com/community-scripts/ProxmoxVE) repo.
 
 ## Usage
 
 Run the installer **on your Proxmox host**:
-
-### IronClaw
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/danielporta/proxmox-agent-installer/main/ironclaw-installer.sh)"
-```
 
 ### OpenClaw
 ```bash
@@ -30,13 +26,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/danielporta/proxmox-agen
 ```
 
 ## Post-Installation
-
-### IronClaw
-```bash
-ironclaw onboard
-systemctl start ironclaw
-# Web UI: http://<container-ip>:3000
-```
 
 ### OpenClaw
 ```bash
@@ -56,11 +45,9 @@ systemctl start hermes
 
 ```
 .
-├── ironclaw-installer.sh        # Proxmox host script – IronClaw
 ├── openclaw-installer.sh        # Proxmox host script – OpenClaw
 ├── hermes-installer.sh          # Proxmox host script – Hermes
 ├── install/
-│   ├── ironclaw-install.sh      # runs inside LXC container
 │   ├── openclaw-install.sh      # runs inside LXC container
 │   └── hermes-install.sh        # runs inside LXC container
 └── misc/
